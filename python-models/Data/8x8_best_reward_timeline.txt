@@ -1,0 +1,4 @@
+tensor(54.)
+tensor(64.)
+tensor(75.)
+tensor(98.)

@@ -19,22 +19,16 @@ def glynn(M):
     old_gray = 0
     sign = +1
 
-    '''
-    - ? purpose of dict?
-    - sum over all 2**(n-1) deltas
-    '''
+    
+    # sum over all 2**(n-1) deltas
     binary_power_dict = {2**i:i for i in range(n)}
     num_loops = 2**(n-1)
 
     for bin_index in range(1, num_loops + 1):
         total += sign * np.prod(row_sum)
 
-        '''
-        - new_gray is the i-th gray code
-        - gray_diff records the index which flipped
-          between the (i-1)th and i-th gray code
-        - ? index
-        '''
+        # new_gray is the i-th gray code
+        # gray_diff records the index which flipped between the (i-1)th and i-th gray code
         new_gray = bin_index ^ (bin_index//2)
         gray_diff = old_gray ^ new_gray
         gray_diff_index = binary_power_dict[gray_diff]

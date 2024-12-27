@@ -1,0 +1,4 @@
+tensor(25.)
+tensor(28.)
+tensor(28.)
+tensor(32.)

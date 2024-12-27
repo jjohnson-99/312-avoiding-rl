@@ -1,0 +1,8 @@
+tensor(72.)
+tensor(144.)
+tensor(184.)
+tensor(184.)
+tensor(225.)
+tensor(276.)
+tensor(320.)
+tensor(322.)
