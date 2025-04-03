@@ -1,4 +1,4 @@
-# Note: This repo is unintelligible and is only the last state of some data generation I was doing. I would like to clean it at some point, though I don't know that I'll ever have time.
+### Note: This repo is unintelligible and is only the last state of some data generation I was doing. I would like to clean it at some point, though I don't know that I'll ever have time.
 
 I plan to discuss the problem and eventually link to a preprint.
 
