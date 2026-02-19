@@ -15,6 +15,22 @@ interactive testing for several models in both Python and Julia.
 
 ## Introduction
 
+
+## Methods
+
+### Single agent models
+
+These work by first placing the 5 free 1's, then using the single agent to
+place additional 1's.
+
+### Two agent models
+
+Here, the first agent places crucial 1's then fill the resulting main branch.
+The second agent then fills the remaining 1's
+
+
+## Theory
+
 We introduce pattern-avoiding matrices informally, for more information on the
 topics of pattern-avoiding permutations and patter-avoiding matrices, see (find
 some material).
@@ -60,9 +76,8 @@ $a_{32}$, $a_{43}$) or ($a_{24}$, $a_{32}$, $a_{43}$).
 
 ### The permanent
 
-We are primarily interested in generating 312-avoiding matrices with large
-permanent so we define the permanent here. All other important theory is
-contained in the theory section below.
+Since we are primarily interested in generating 312-avoiding matrices with large
+permanent, we discuss it rigorously here.
 
 The permanent of an $n \times n$ matrix $A$ is defined as
 
@@ -78,20 +93,5 @@ the pattern 312.
 You may have noticed the usage of the terms 'pattern' and 'permutation'.
 Generally, pattern will mean a permutation contained in $S_k$ where $k\leq n$,
 while a permutation will be in the usual sense, i.e., an element of $S_n$.
-
-## Methods
-
-### Single agent models
-
-These work by first placing the 5 free 1's, then using the single agent to
-place additional 1's.
-
-### Two agent models
-
-Here, the first agent places crucial 1's then fill the resulting main branch.
-The second agent then fills the remaining 1's
-
-
-## Theory
 
 
