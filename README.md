@@ -1,7 +1,3 @@
-### Note: This repo is unintelligible and is only the last state of some data generation I was doing. I would like to clean it at some point, though I don't know that I'll ever have time.
-
-I plan to discuss the problem and eventually link to a preprint.
-
 # 312-avoiding-rl
 Reinforcement learning models aimed to find 312-avoiding matrices with maximal permanent. This is an extremely crude draft. It works for its intended use, but it is not pretty. I plan to package it neatly into a (multiple) script(s).
 
