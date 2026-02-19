@@ -10,11 +10,16 @@ interactive testing for several models in both Python and Julia.
 - [Usage](#usage)
 - [Parameters](#parameters)
 - [Methods](#methods)
-- [Results](#results)
+- [Output](#output)
 - [Theory](#theory)
 
 ## Introduction
 
+## Installation
+
+## Usage
+
+## Parameters
 
 ## Methods
 
@@ -28,6 +33,7 @@ place additional 1's.
 Here, the first agent places crucial 1's then fill the resulting main branch.
 The second agent then fills the remaining 1's
 
+## Output
 
 ## Theory
 
