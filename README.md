@@ -4,6 +4,10 @@ This repository contains several reinforcement learning models which generate
 312-avoiding matrices with large permanents. Jupyter notebooks are provided for
 interactive testing for several models in both Python and Julia.
 
+I will continue to document this repo, though development of these models have
+been discontinued in favor of better models utilizing FunSearch along with a
+set of heuristics observed with the help of this repo.
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Installation](#installation)
