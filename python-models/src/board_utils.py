@@ -1,3 +1,4 @@
+import numpy as np
 
 def convert_to_board(word, n):
     """Docstring

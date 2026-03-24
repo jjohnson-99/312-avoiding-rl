@@ -7,10 +7,13 @@ complexity to O(2^(n-1)*n).
 
 import numpy as np
 
-def cmp(a, b):
+def _cmp(a, b):
     return (int(a) > int(b)) - (int(a) < int(b))  
 
 def glynn(M):
+    """
+    M is an n*n numpy array
+    """
     # add rows of M
     row_sum = np.sum(M, axis=0)
     n = len(M)
@@ -34,7 +37,7 @@ def glynn(M):
         gray_diff_index = binary_power_dict[gray_diff]
 
         new_vector = M[gray_diff_index]
-        direction = 2 * cmp(old_gray, new_gray)
+        direction = 2 * _cmp(old_gray, new_gray)
 
         for i in range(n):
             row_sum[i] += new_vector[i] * direction
