@@ -27,6 +27,10 @@ Note that computing the permanent is extremely computationally expensive. The ti
 model, it is possible to achieve the maximal values for n = 1 to 8 given enough experimenting with the parameters. It is difficult to achieve the values
 225 for n = 9 and 424 for n = 10. Beyond n = 10, large values are known but this model becomes too naive to produce them.
 
+## Requirements for running locally
+
+* Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
+
 ## Installation
 
 * Clone the repository:
