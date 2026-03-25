@@ -4,8 +4,8 @@ def convert_to_board(word, n):
     """Docstring
 
     """
-    word = word.astype(np.float32)  # cast input array to float32
-    board = np.zeros((n, n), dtype=np.float32)
+    word = word.astype(int)  # cast input array to float32
+    board = np.zeros((n, n), dtype=int)
     for i in range(len(word)):
         board[i//n, i%n] = word[i]
     return board

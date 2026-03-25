@@ -7,13 +7,11 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from permanents import glynn
-from board_utils import (
-    convert_to_board,
-    final_board_state,
-)
 from helper_functions import (
     generate_session,
+    save_best_timeline,
+    save_board,
+    save_reward,
     select_elites,
     select_super_sessions,
 )
@@ -73,12 +71,10 @@ def main(args):
             actions_batch = torch.cat((actions_batch, super_actions), dim=0)
             rewards_batch = torch.cat((rewards_batch, super_rewards), dim=0)
 
-        elite_states, elite_actions = select_elites(states_batch, actions_batch, rewards_batch, percentile = args.percentile)
+        elite_states, elite_actions = select_elites(states_batch, actions_batch, rewards_batch, args)
 
-        super_sessions = select_super_sessions(states_batch, actions_batch, rewards_batch, percentile = args.super_percentile)
+        super_sessions = select_super_sessions(states_batch, actions_batch, rewards_batch, args)
         super_sessions = [(super_sessions[0][i], super_sessions[1][i], super_sessions[2][i]) for i in range(len(super_sessions[2]))]
-
-        '''Why did I sort? should just use max_index = torch.argmax(super_rewards). Try later.'''
         super_sessions.sort(key=lambda x: x[2], reverse=True)
 
         optimizer.zero_grad()
@@ -94,38 +90,30 @@ def main(args):
         super_actions = torch.stack([super_sessions[i][1] for i in range(len(super_sessions))])
         super_rewards = torch.stack([super_sessions[i][2] for i in range(len(super_sessions))])
 
-        print("\n" + str(i) +  ". Best individuals: " + str(super_rewards))#str(np.flip(np.sort(super_rewards))))
+        print("\n" + str(i+1) +  ". Best individuals: " + str(super_rewards))
 
-        #max_index = torch.argmax(super_rewards)
         max_index = 0
-
         if super_rewards[max_index] > cur_best_reward:
             cur_best_reward = super_rewards[max_index]
-            #print('new best: ' + str(cur_best_reward))
+            print('new best: ' + str(cur_best_reward))
             cur_best_board = super_states[max_index, 4 * args.size - 4].numpy()
             #cur_best_game = super_states[max_index]
             #cur_best_actions = super_actions[max_index]
 
             best_states_set = set()
             best_states_set.add(str(cur_best_board))
-
-            with open(os.path.join('Data', str(args.experiment_name)+'_best_board_timeline'+'.txt'), 'a') as f:
-                f.write(str(convert_to_board(cur_best_board, args.size)))
-                f.write("\n")
-            with open(os.path.join('Data', str(args.experiment_name)+'_best_reward_timeline'+'.txt'), 'a') as f:
-                f.write(str(cur_best_reward))
-                f.write("\n")
+            
+            #save_board(cur_best_board, args)
+            #save_reward(cur_best_reward, args)
+            save_best_timeline(cur_best_board, cur_best_reward, args)
                     
         if super_rewards[max_index] == cur_best_reward:
             cur_best_board = super_states[max_index, 4 * args.size - 4].numpy()
             if str(cur_best_board) not in best_states_set:
                 best_states_set.add(str(cur_best_board))
-                with open(os.path.join('Data', str(args.experiment_name)+'_best_board_timeline'+'.txt'), 'a') as f:
-                    f.write(str(convert_to_board(cur_best_board, args.size)))
-                    f.write("\n")
-                with open(os.path.join('Data', str(args.experiment_name)+'_best_reward_timeline'+'.txt'), 'a') as f:
-                    f.write(str(cur_best_reward))
-                    f.write("\n")
+                #save_board(cur_best_board, args)
+                #save_reward(cur_best_reward, args)
+                save_best_timeline(cur_best_board, cur_best_reward, args)
 
 
 if __name__ == "__main__":
@@ -141,8 +129,8 @@ if __name__ == "__main__":
     parser.add_argument('--lr', type=float, default=0.0001, help='learning rate')
     parser.add_argument('--epochs', type=int, default=10, help='number of epochs')
     parser.add_argument('--device', type=str, default='mps', choices=['cuda', 'cpu', 'mps'], help='device to trian on: cuda, cpu, or mps')
-    parser.add_argument('--experiment_name', type=str, default='nxn_test', help='experiment_name')
-    parser.add_argument('--root_data_directory', type=str, default='datasets', help='the root directory the training and test data exists in')
+    parser.add_argument('--experiment_name', type=str, default='experiment', help='experiment_name')
+    parser.add_argument('--data_directory', type=str, default='data', help='the directory data should be saved to')
 
     # Parse the arguments
     args = parser.parse_args()

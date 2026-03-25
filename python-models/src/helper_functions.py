@@ -1,6 +1,8 @@
+import os
 import numpy as np
 import torch
 
+from board_utils import convert_to_board
 from permanents import glynn
 
 
@@ -28,14 +30,14 @@ def generate_session(agent, args):# n_sessions, n, args):
 
         final_state = states[i,step, :]
         state_mtx = final_state.reshape(args.size, args.size)
-        scores[i] = glynn(state_mtx.numpy())
+        scores[i] = glynn(state_mtx.numpy()).item()
 
     return states, actions, scores
 
 
-def select_super_sessions(n_sessions, states_batch, actions_batch, rewards_batch, percentile=90):
-    counter = n_sessions * (100 - percentile)/100
-    reward_threshold = np.percentile(rewards_batch, percentile)
+def select_super_sessions(states_batch, actions_batch, rewards_batch, args):
+    counter = args.size * (100 - args.percentile)/100
+    reward_threshold = np.percentile(rewards_batch, args.percentile)
 
     super_states = torch.empty(0)
     super_actions = torch.empty(0)
@@ -54,9 +56,9 @@ def select_super_sessions(n_sessions, states_batch, actions_batch, rewards_batch
     return super_states, super_actions, super_rewards
 
 
-def select_elites(n_sessions, states_batch, actions_batch, rewards_batch, percentile=50):
-    counter = n_sessions * (100 - percentile)/100
-    reward_threshold = np.percentile(rewards_batch, percentile)
+def select_elites(states_batch, actions_batch, rewards_batch, args):
+    counter = args.size * (100 - args.percentile)/100
+    reward_threshold = np.percentile(rewards_batch, args.percentile)
 
     elite_states = torch.empty(0)
     elite_actions = torch.empty(0)
@@ -65,19 +67,9 @@ def select_elites(n_sessions, states_batch, actions_batch, rewards_batch, percen
         if counter <= 0:
             break
 
-        if rewards_batch[i] >= reward_threshold - 0.01:
-            game_end_index = 0
-            for item in states_batch[i]:
-                if item.sum() == 0 and game_end_index != 0:
-                    break
-                elite_states = torch.cat((elite_states, item.unsqueeze(0)))
-                game_end_index += 1
-
-            for item in actions_batch[i]:
-                if game_end_index == 0:
-                    break
-                elite_actions = torch.cat((elite_actions, item.unsqueeze(0)))
-                game_end_index -= 1
+        if rewards_batch[i] >= reward_threshold - 0.001:
+            elite_states = torch.cat((elite_states, states_batch[i].unsqueeze(0)), dim=0)
+            elite_actions = torch.cat((elite_actions, actions_batch[i].unsqueeze(0)), dim=0)
             counter -= 1
 
     return elite_states, elite_actions
@@ -246,4 +238,40 @@ def add_point_and_forbidden_state(input_state, action_vec, forbidden_state, corn
             action_vec = action_vec / torch.sum(action_vec)
 
     return cur_state, action_taken, cur_forbidden
+
+
+def save_board(board, args):
+    # Make a new folder if 'Data' folder does not exist
+    if not os.path.exists(args.data_directory):
+        os.makedirs(args.data_directory)
+
+    with open(os.path.join(args.data_directory, str(args.experiment_name)+'_best_board_timeline'+'.txt'), 'a') as f:
+        f.write(str(convert_to_board(board, args.size))+'\n')
+        f.write('\n')
+
+
+def save_reward(reward, args):
+    # Make a new folder if 'Data' folder does not exist
+    if not os.path.exists(args.data_directory):
+        os.makedirs(args.data_directory)
+
+    with open(os.path.join(args.data_directory, str(args.experiment_name)+'_best_reward_timeline'+'.txt'), 'a') as f:
+        f.write('Current best permanent: '+str(int(reward.item()))+'\n')
+        f.write('\n')
+
+
+def save_best_timeline(board, reward, args):
+    # Make a new folder if 'Data' folder does not exist
+    if not os.path.exists(args.data_directory):
+        os.makedirs(args.data_directory)
+
+    with open(os.path.join(args.data_directory, str(args.experiment_name)+'_best_timeline'+'.txt'), 'a') as f:
+        f.write('Current best permanent: '+str(int(reward.item()))+'\n')
+        f.write('Matrix:\n')
+        f.write(str(convert_to_board(board, args.size))+'\n')
+        f.write('\n')
+
+
+def save_game_timeline():
+    return
 

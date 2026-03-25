@@ -1,0 +1,32 @@
+Current best permanent: 13
+Matrix:
+[[1 1 1 0 0]
+ [0 1 1 0 0]
+ [1 1 1 1 0]
+ [1 0 1 1 1]
+ [1 0 0 1 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 1 0]
+ [0 1 1 1 0]
+ [0 1 0 1 1]
+ [1 1 0 1 1]
+ [1 0 0 0 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 0 0]
+ [1 1 1 0 0]
+ [1 0 1 1 0]
+ [1 0 1 1 1]
+ [1 0 0 1 1]]
+
+Current best permanent: 16
+Matrix:
+[[1 1 0 0 0]
+ [1 1 1 1 0]
+ [0 0 1 1 1]
+ [0 0 1 1 1]
+ [1 1 1 0 1]]
+
