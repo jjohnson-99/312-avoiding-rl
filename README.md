@@ -66,7 +66,7 @@ uv run python src/model.py --size 5 --experiment_name 5x5 --epochs 25
 
 ## Parameters
 
-- `--size`: The size of the nxn matrices to be generated. Default is 5.
+- `--size`: The size of the nxn matrices to be generated. Default is `5`.
 - `--device`: What device you want to train on (`cuda`, `cpu`, `mps`). Default is `cpu`.
 - `--batch_size`: What batch size of the model. Default is `100`.
 - `--percentile`: The top 100-x percentile the agent will learn from. Default is `90`.
