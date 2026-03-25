@@ -240,6 +240,21 @@ def add_point_and_forbidden_state(input_state, action_vec, forbidden_state, corn
     return cur_state, action_taken, cur_forbidden
 
 
+def save_experiment_header(args):
+    if not os.path.exists(args.data_directory):
+        os.makedirs(args.data_directory)
+
+    with open(os.path.join(args.data_directory, str(args.experiment_name)+'_best_timeline'+'.txt'), 'a') as f:
+        f.write('Beginning experiment with:\n')
+        f.write('   n = '+ str(args.size) +'\n')
+        f.write('   batch size: '+ str(args.batch_size) +'\n')
+        f.write('   percentile: '+ str(args.percentile) +'\n')
+        f.write('   super_percentile: '+ str(args.super_percentile) +'\n')
+        f.write('   learning rate: '+ str(args.lr) +'\n')
+        f.write('   epochs: '+ str(args.epochs) +'\n')
+        f.write('\n')
+
+
 def save_board(board, args):
     # Make a new folder if 'Data' folder does not exist
     if not os.path.exists(args.data_directory):

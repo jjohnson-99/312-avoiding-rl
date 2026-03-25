@@ -9,6 +9,7 @@ import torch.optim as optim
 
 from helper_functions import (
     generate_session,
+    save_experiment_header,
     save_best_timeline,
     save_board,
     save_reward,
@@ -92,6 +93,9 @@ def main(args):
 
         print("\n" + str(i+1) +  ". Best individuals: " + str(super_rewards))
 
+        if i == 0:
+            save_experiment_header(args)
+
         max_index = 0
         if super_rewards[max_index] > cur_best_reward:
             cur_best_reward = super_rewards[max_index]
@@ -127,7 +131,7 @@ if __name__ == "__main__":
     parser.add_argument('--super_percentile', type=int, default='95', help='top 100-x percentile that survives to the next generation')
  
     parser.add_argument('--lr', type=float, default=0.0001, help='learning rate')
-    parser.add_argument('--epochs', type=int, default=10, help='number of epochs')
+    parser.add_argument('--epochs', type=int, default=25, help='number of epochs')
     parser.add_argument('--device', type=str, default='mps', choices=['cuda', 'cpu', 'mps'], help='device to trian on: cuda, cpu, or mps')
     parser.add_argument('--experiment_name', type=str, default='experiment', help='experiment_name')
     parser.add_argument('--data_directory', type=str, default='data', help='the directory data should be saved to')

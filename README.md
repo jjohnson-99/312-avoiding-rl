@@ -18,26 +18,66 @@ set of heuristics observed with the help of this repo.
 - [Theory](#theory)
 
 ## Introduction
+I will add more discussion of the theory. If you would like to run the model and assess the output, you should know the largest possible permanents of 
+312-avoiding (0,1)-matrices for n = 1 to 8 are known to be: 1, 2, 4, 8, 16, 32, 64, 120. That is, as an example, the largest possible permanent of a 
+5x5 312-avoiding (0,1)-matrix is 32. The value is thought to be 225 for n = 9 and 424 for n = 10. Beyond that, large examples are known but none are thought
+to be optimal.
+
+Note that computing the permanent is extremely computationally expensive. The time to run grows exponentially in n, you will see this even at n = 6. With this
+model, it is possible to achieve the maximal values for n = 1 to 8 given enough experimenting with the parameters. It is difficult to achieve the values
+225 for n = 9 and 424 for n = 10. Beyond n = 10, large values are known but this model becomes too naive to produce them.
 
 ## Installation
 
+* Clone the repository:
+    ```bash
+    git clone https://github.com/jjohnson-99/312-avoidig-rl.git
+    ```
+
+## Running the model
+
+* Create a virtual environment and install dependencies with:
+    ```bash
+    uv sync
+    ```
+* Activate the virtual environment with:
+   - MacOS/Linux:
+     ```bash
+     source .venv/bin/activate
+     ```
+   - Windows:
+     ```bash
+     .venv\Scripts\activate
+     ```
+* Run the model with, assuming you remain in the root directory:
+    ```bash
+    cd python-models
+    uv run python src/model.py
+    ```
+
 ## Usage
+
+The main script for running experiments is `python-models/src/model.py`. You can run it with various options depending on the method you want to use. Assuming you are
+currently in the `python-models` directory, an example run could be:
+
+```bash
+uv run python src/model.py --size 5 --experiment_name 5x5 --epochs 25
+```
 
 ## Parameters
 
-## Methods
-
-### Single agent models
-
-These work by first placing the 5 free 1's, then using the single agent to
-place additional 1's.
-
-### Two agent models
-
-Here, the first agent places crucial 1's then fill the resulting main branch.
-The second agent then fills the remaining 1's
+- `--size`: The size of the nxn matrices to be generated. Default is 5.
+- `--device`: What device you want to train on (`cuda`, `cpu`, `mps`). Default is `cpu`.
+- `--batch_size`: What batch size of the model. Default is `100`.
+- `--percentile`: The top 100-x percentile the agent will learn from. Default is `90`.
+- `--super_percentile`: The top 100-x percentile that survives to the next generation. Default is `95`.
+- `--lr`: Learning rate of the model. Default is `0.0001`.
+- `--epochs`: Number of epochs to run. Default is `25`, though the number should be larger to see optimal permanents for n>6.
+- `--experiment_name`: Name of the experiment. Default is `experiment`.
+- `--data_directory`: Directory where the data should be saved. Default is `../data`.
 
 ## Output
+The experiments results will be saved in the `data` directory as `txt` files. Note that new data is appened to existing experiment output files.
 
 ## Theory
 

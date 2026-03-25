@@ -1,18 +1,162 @@
+Beginning experiment with:
+   n = 5
+   batch size: 100
+   percentile: 90
+   super_percentile: 95
+   learning rate: 0.0001
+   epochs: 25
+
+Current best permanent: 12
+Matrix:
+[[1 1 0 0 0]
+ [1 1 1 1 0]
+ [0 1 1 1 0]
+ [0 1 0 1 1]
+ [1 1 0 1 1]]
+
+Current best permanent: 12
+Matrix:
+[[1 1 1 0 0]
+ [1 1 1 0 0]
+ [1 0 1 1 1]
+ [1 0 1 1 1]
+ [1 0 0 0 1]]
+
 Current best permanent: 13
 Matrix:
 [[1 1 1 0 0]
- [0 1 1 0 0]
+ [0 1 1 1 1]
+ [0 0 1 1 1]
+ [1 1 1 0 1]
+ [1 0 0 0 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 1 0]
+ [0 0 1 1 1]
+ [0 0 1 1 1]
+ [0 1 1 0 1]
+ [1 1 0 0 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 0 0]
+ [1 1 1 0 0]
+ [1 0 1 1 0]
+ [0 0 1 1 1]
+ [1 0 1 1 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 1 0]
+ [0 0 1 1 1]
+ [0 1 1 1 1]
+ [1 1 0 0 1]
+ [1 0 0 0 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 0 0 0]
+ [1 1 1 0 0]
+ [1 1 1 1 1]
+ [0 0 0 1 1]
+ [1 0 1 1 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 0 0 0]
  [1 1 1 1 0]
- [1 0 1 1 1]
- [1 0 0 1 1]]
+ [0 0 1 1 1]
+ [0 1 1 1 1]
+ [1 1 0 0 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 0 0 0]
+ [1 1 1 1 1]
+ [0 0 0 1 1]
+ [0 0 1 1 1]
+ [1 1 1 0 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 0 0]
+ [0 1 1 1 1]
+ [0 0 1 1 1]
+ [0 1 1 0 1]
+ [1 1 0 0 1]]
+
+Beginning experiment with:
+   n = 5
+   batch size: 100
+   percentile: 90
+   super_percentile: 95
+   learning rate: 0.0001
+   epochs: 15
+
+Current best permanent: 14
+Matrix:
+[[1 1 0 0 0]
+ [1 1 1 0 0]
+ [1 1 1 1 1]
+ [0 0 0 1 1]
+ [1 0 1 1 1]]
 
 Current best permanent: 14
 Matrix:
 [[1 1 1 1 0]
  [0 1 1 1 0]
+ [1 1 0 1 0]
+ [1 0 0 1 1]
+ [1 0 0 1 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 0 0]
+ [1 1 1 1 0]
+ [1 0 1 1 0]
+ [1 0 0 1 1]
+ [1 0 0 1 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 0 0 0]
+ [1 1 1 1 0]
+ [0 0 1 1 1]
+ [0 1 1 1 1]
+ [1 1 0 0 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 0 0]
+ [0 1 1 1 0]
+ [0 1 1 1 1]
  [0 1 0 1 1]
- [1 1 0 1 1]
- [1 0 0 0 1]]
+ [1 1 0 0 1]]
+
+Beginning experiment with:
+   n = 5
+   batch size: 100
+   percentile: 90
+   super_percentile: 95
+   learning rate: 0.0001
+   epochs: 15
+
+Current best permanent: 14
+Matrix:
+[[1 1 0 0 0]
+ [1 1 1 0 0]
+ [1 1 1 1 1]
+ [0 0 0 1 1]
+ [1 0 1 1 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 1 0]
+ [0 1 1 1 0]
+ [1 1 0 1 0]
+ [1 0 0 1 1]
+ [1 0 0 1 1]]
 
 Current best permanent: 14
 Matrix:
@@ -22,11 +166,35 @@ Matrix:
  [1 0 1 1 1]
  [1 0 0 1 1]]
 
-Current best permanent: 16
+Current best permanent: 14
 Matrix:
 [[1 1 0 0 0]
  [1 1 1 1 0]
  [0 0 1 1 1]
- [0 0 1 1 1]
- [1 1 1 0 1]]
+ [0 1 1 1 1]
+ [1 1 0 0 1]]
+
+Current best permanent: 14
+Matrix:
+[[1 1 1 0 0]
+ [0 1 1 1 0]
+ [0 1 1 1 1]
+ [0 1 0 1 1]
+ [1 1 0 0 1]]
+
+Current best permanent: 16
+Matrix:
+[[1 1 1 0 0]
+ [1 1 1 0 0]
+ [1 0 1 1 1]
+ [0 0 0 1 1]
+ [1 0 1 1 1]]
+
+Current best permanent: 16
+Matrix:
+[[1 1 1 0 0]
+ [0 1 1 1 0]
+ [1 1 1 1 0]
+ [1 0 0 1 1]
+ [1 0 0 1 1]]
 
